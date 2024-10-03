@@ -3,15 +3,11 @@ const aliceTumbling = [
   { transform: "rotate(360deg) scale(0)" },
 ];
 
-console.log(aliceTumbling);
-
 const aliceTiming = {
   duration: 2000,
   iterations: 1,
   fill: "forwards",
 };
-
-console.log(aliceTiming);
 
 const alice1 = document.querySelector("#alice1");
 const alice2 = document.querySelector("#alice2");
@@ -23,16 +19,20 @@ animate alice2 when alice1 has finished, and alice3 when alice2 has finished.
 The animate() method returns an Animation object.
 
 This object has a finished property, which is a Promise that is fulfilled when the animation has finished playing. So we can use this promise to know when to start the next animation.
+
+implement it using async and await.
 */
 
-/*
-approach 2: promise chain 
 
-Next, implement it as a promise chain. Note that there are a few different ways you can write this, because of the different forms you can use for an arrow function. Try some different forms. Which is the most concise? Which do you find the most readable?
-*/
+async function hiAlice () {
+  try {
+    await alice1.animate(aliceTumbling, aliceTiming).finished
+    await alice2.animate(aliceTumbling, aliceTiming).finished
+    await alice3.animate(aliceTumbling, aliceTiming).finished
+    console.log("Done!")
+  } catch (error) {
+      console.log("Error.")
+  }
+}
 
-alice1.animate(aliceTumbling, aliceTiming).finished
- .then(() => { return alice2.animate(aliceTumbling, aliceTiming).finished })
- .then(() => { return alice3.animate(aliceTumbling, aliceTiming)});
-
-
+hiAlice();
