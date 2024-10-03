@@ -1,5 +1,5 @@
 /*
-approach 1: callback hell
+approach 1: using callback hell
 
 First, implement something that works, but has the promise version of the "callback hell" problem we saw in our discussion of using callbacks.
 */
