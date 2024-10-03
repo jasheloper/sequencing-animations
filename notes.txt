@@ -1,0 +1,17 @@
+why didn't i need a return statement with callback hell?
+
+    Great question! You've spotted an important difference between the two approaches. 
+
+    In the "callback hell" version, you didn't need explicit return statements because:
+
+        - Each animation is nested within the previous one's callback.
+
+        - The sequence is maintained by the nesting structure itself.
+
+        - Each animation starts when its parent callback is executed.
+
+    In this nested structure, the code naturally waits for each animation to finish before starting the next one, due to the nesting of the .then() callbacks.
+
+    In contrast, the flat promise chain relies on returning promises to maintain the sequence. Without these returns, the chain wouldn't wait for each animation to complete before moving to the next one.
+
+    This difference highlights why promise chains are often preferred: they achieve the same sequential behavior with a flatter, more maintainable structure, albeit requiring explicit returns to pass the promises along the chain.
